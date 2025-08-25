@@ -20,3 +20,36 @@ variable "vpc_additional_cidrs" {
   description = "Lista de CIDR's adicionais da VPC"
   default     = []
 }
+
+variable "public_subnets" {
+  description = "Lista de CIDR's das subnets públicas"
+  type = list(object({
+    name              = string
+    cidr              = string
+    availability_zone = string
+
+    # map_public_ip_on_launch = bool
+  }))
+}
+
+
+variable "private_subnets" {
+  description = "Lista de CIDR's das subnets privadas"
+  type = list(object({
+    name              = string
+    cidr              = string
+    availability_zone = string
+
+  }))
+}
+
+variable "database_subnets" {
+  description = "Lista de CIDR's das subnets privadas de banco de dados"
+  default     = []
+  type = list(object({
+    name              = string
+    cidr              = string
+    availability_zone = string
+
+  }))
+}
